@@ -1,0 +1,50 @@
+﻿@model LightMail.DataLayer.DTO.UserLogin
+@{
+    ViewData["Title"] = "ورود";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <h4 class="mb-3 secondary-font">به سامانه مکاتبات اداری خوش آمدید!</h4>
+        <p class="mb-4">لطفا وارد حساب خود شده و شروع کنید</p>
+
+        <form id="formAuthentication" class="mb-3" method="POST">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control text-start" />
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div class="mb-3 form-password-toggle">
+                <div class="d-flex justify-content-between">
+                    <label asp-for="Password" class="form-label"></label>
+                    <a asp-action="ForgotPassword" asp-controller="Auth">
+                        <small>رمز عبور را فراموش کردید؟</small>
+                    </a>
+                </div>
+                <div class="input-group input-group-merge">
+                    <input asp-for="Password" class="form-control text-start" dir="ltr" />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    <label asp-for="RememberMe" class="form-label"></label>
+                    <span asp-validation-for="RememberMe"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary d-grid w-100" type="submit">ورود</button>
+            </div>
+        </form>
+
+        <p class="text-center">
+            <span>کاربر جدید هستید؟</span>
+            <a asp-controller="Auth" asp-action="SignUp">
+                <span>یک حساب بسازید</span>
+            </a>
+        </p>
+    </div>
+</div>

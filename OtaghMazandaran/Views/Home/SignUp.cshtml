@@ -1,0 +1,80 @@
+﻿@model LightMail.DataLayer.DTO.UserSignUp
+@{
+    ViewData["Title"] = "ثبت نام کاربر";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<!-- Register Card -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="mb-3 secondary-font">در ورود اطلاعات دقت کنید</h4>
+        <p class="mb-4">پس از ثبت نام باید توسط مدیر سایت تایید شوید</p>
+
+        <form id="formAuthentication" class="mb-3" method="POST">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label"></label>
+                <input asp-for="FullName" class="form-control text-start" />
+                <span asp-validation-for="FullName"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Phone" class="form-label"></label>
+                <input asp-for="Phone" class="form-control text-start" />
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control text-start" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control text-start" />
+                <span asp-validation-for="UserName"></span>
+            </div>
+
+            <div class="mb-3 form-password-toggle">
+                <label asp-for="Password" class="form-label"></label>
+                <div class="input-group input-group-merge">
+                    <input asp-for="Password" class="form-control text-start" dir="ltr"/>
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div class="mb-3 form-password-toggle">
+                <label asp-for="RePassword" class="form-label"></label>
+                <div class="input-group input-group-merge">
+                    <input asp-for="RePassword" class="form-control text-start" dir="ltr" />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+                <span asp-validation-for="RePassword"></span>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="terms-conditions"  name="terms" onchange="SetActiveBtn()">
+                    <label class="form-check-label" for="terms-conditions">
+                        من موافقم با
+                        <a href="javascript:void(0);">سیاست حریم خصوصی و قوانین</a>
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-primary d-grid w-100" id="SubmitBtn" type="submit" disabled>عضویت</button>
+        </form>
+
+        <p class="text-center">
+            <span>حساب کاربری دارید؟</span>
+            <a asp-controller="Auth" asp-action="LogIn">
+                <span>وارد شوید</span>
+            </a>
+        </p>
+    </div>
+</div>
+<!-- Register Card -->
+@section Scripts{
+    <script>
+        function SetActiveBtn(){
+            document.getElementById('SubmitBtn').disabled = !document.getElementById('terms-conditions').checked;
+        }
+    </script>
+}
