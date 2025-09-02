@@ -5,7 +5,7 @@
 }
 <div class="card">
     <div class="card-body">
-        <h4 class="mb-3 secondary-font">به سامانه مکاتبات اداری خوش آمدید!</h4>
+        <h4 class="mb-3 secondary-font">به سامانه مدیریت اموال خوش آمدید!</h4>
         <p class="mb-4">لطفا وارد حساب خود شده و شروع کنید</p>
 
         <form id="formAuthentication" class="mb-3" method="POST">
@@ -18,7 +18,7 @@
             <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
                     <label asp-for="Password" class="form-label"></label>
-                    <a asp-action="ForgotPassword" asp-controller="Auth">
+                    <a asp-action="ForgotPassword" asp-controller="Home">
                         <small>رمز عبور را فراموش کردید؟</small>
                     </a>
                 </div>
@@ -42,7 +42,7 @@
 
         <p class="text-center">
             <span>کاربر جدید هستید؟</span>
-            <a asp-controller="Auth" asp-action="SignUp">
+            <a asp-controller="Home" asp-action="SignUp">
                 <span>یک حساب بسازید</span>
             </a>
         </p>

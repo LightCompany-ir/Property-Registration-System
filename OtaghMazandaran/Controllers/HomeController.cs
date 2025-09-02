@@ -29,6 +29,10 @@ namespace OtaghMazandaran.Controllers
         {
             throw new NotImplementedException();
         }
+        public IActionResult SignOut()
+        {
+            throw new NotImplementedException();
+        }
         public IActionResult Privacy()
         {
             return View();
