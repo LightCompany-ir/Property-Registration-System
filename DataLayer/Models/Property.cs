@@ -52,6 +52,7 @@ namespace DataLayer.Models
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         public Property() { }
-        public required virtual Place Place { get; set; }
+        public virtual Place Place { get; set; }
     }
 }
+/*PropertyId,PropertyName,PropertyBrand,PropertyColor,PropertyDescription,PlaceId,CreatedByUser,UpdatedByUser,DeletedByUser,CreatedDate,UpdatedDate*/

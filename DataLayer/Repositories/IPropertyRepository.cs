@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    public interface IPropertyRepository:IDisposable
+    public interface IPropertyRepository : IDisposable
     {
         IEnumerable<Property> GetAll();
         /// <summary>
@@ -23,10 +23,12 @@ namespace DataLayer.Repositories
         void Update(Property src);
         void Update(UpdatePropertyMV src);
         /// <summary>
-        /// Just Set IsDelete to True
+        /// Delete Property if User Finded
         /// </summary>
-        /// <param name="id">PropertyId</param>
-        void Delete(int id);
+        /// <param name="id">Property Id</param>
+        /// <param name="UserId">Admin User Id</param>
+        /// <returns>false if user not found</returns>
+        bool Delete(int id, int UserId);
         void Save();
     }
 }
