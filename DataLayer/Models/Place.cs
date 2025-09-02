@@ -20,5 +20,8 @@ namespace DataLayer.Models
         [DisplayName("توضیح مکان")]
         [MaxLength(550, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         public string PlaceDescription { get; set; } = string.Empty;
+
+        public Place() { }
+        public List<Property>? Properties { get; set; }
     }
 }

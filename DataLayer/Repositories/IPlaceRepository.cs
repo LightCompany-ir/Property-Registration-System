@@ -12,7 +12,6 @@ namespace DataLayer.Repositories
     {
         IEnumerable<Place> GetAll();
         Place Get(int id);
-        PlaceDetailWithPropertyList GetWithProperty(int id);
         int Insert(Place src);
         void Update(Place src);
         /// <summary>
