@@ -1,4 +1,4 @@
-﻿@model LightMail.DataLayer.DTO.UserSignUp
+﻿@model DataLayer.DTOs.UserSignUp
 @{
     ViewData["Title"] = "ثبت نام کاربر";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
@@ -21,11 +21,6 @@
                 <label asp-for="Phone" class="form-label"></label>
                 <input asp-for="Phone" class="form-control text-start" />
                 <span asp-validation-for="Phone"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" class="form-control text-start" />
-                <span asp-validation-for="Email"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="UserName" class="form-label"></label>

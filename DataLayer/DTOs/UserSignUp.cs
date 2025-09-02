@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LightMail.DataLayer.DTO
+namespace DataLayer.DTOs
 {
     public class UserSignUp
     {
