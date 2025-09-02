@@ -25,7 +25,7 @@ namespace DataLayer.Models
         [Display(Name = " رمز عبور ")]
         [Required(ErrorMessage = "لطفا مقدار {0} را وارد کنید")]
         [MaxLength(150, ErrorMessage = "مقدار {0} بیش از حد مجاز است")]
-        [MinLength(8, ErrorMessage = "مقدار {0} کمتر از حد مجاز است")]
+        [MinLength(6, ErrorMessage = "مقدار {0} کمتر از حد مجاز است")]
         [DataType(DataType.Password)]
         public required string Password { get; set; }
         [Display(Name = " شماره همراه ")]
