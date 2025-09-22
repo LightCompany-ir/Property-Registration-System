@@ -40,3 +40,4 @@ namespace DataLayer.DTOs
         public int UpdatedByUser { get; set; }
     }
 }
+/*PropertyId,PropertyName,PropertyBrand,PropertyColor,PropertyDescription,PlaceId,UpdatedByUser*/

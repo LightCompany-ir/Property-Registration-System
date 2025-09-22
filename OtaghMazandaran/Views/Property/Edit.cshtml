@@ -1,0 +1,50 @@
+﻿@model DataLayer.DTOs.UpdatePropertyMV
+@{
+    ViewData["Title"] = "ویرایش دارایی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header heading-color">@ViewData["Title"]</h5>
+                <form method="POST">
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.PropertyId)
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <label asp-for="PropertyName" class="form-label"></label>
+                            <input asp-for="PropertyName" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PropertyName)">
+                            <span asp-validation-for="PropertyName" class="form-text text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="PropertyBrand" class="form-label"></label>
+                            <input asp-for="PropertyBrand" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PropertyBrand)">
+                            <span asp-validation-for="PropertyBrand" class="form-text text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="PropertyColor" class="form-label"></label>
+                            <input asp-for="PropertyColor" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PropertyColor)">
+                            <span asp-validation-for="PropertyColor" class="form-text text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="PlaceId" class="form-label"></label>
+                            <select asp-for="PlaceId" class="form-select" asp-items="@ViewBag.Places"></select>
+                            <span asp-validation-for="PlaceId" class="form-text text-danger"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="PropertyDescription" class="form-label"></label>
+                            <input asp-for="PropertyDescription" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PropertyDescription)">
+                            <span asp-validation-for="PropertyDescription" class="form-text text-danger"></span>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2">ذخیره</button>
+                            <a asp-controller="Property" asp-action="Index" class="btn btn-label-secondary">انصراف</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
