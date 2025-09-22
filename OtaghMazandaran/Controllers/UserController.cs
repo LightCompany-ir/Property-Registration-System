@@ -145,6 +145,17 @@ namespace OtaghMazandaran.Controllers
             _db.Update(rslt);
             return RedirectToAction("Index");
         }
-        public IActionResult Delete(int id) { return View(_db.Get(id)); }
+        public IActionResult Delete(int id) 
+        {
+            ViewBag.CanDelete = _db.CanDelete(id);
+            return View(_db.Get(id)); 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteUser(int AdminUserId)
+        {
+            _db.Delete(AdminUserId);
+            return RedirectToAction("Index");
+        }
     }
 }

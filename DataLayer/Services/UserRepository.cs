@@ -26,6 +26,13 @@ namespace DataLayer.Services
             Save();
         }
 
+        public bool CanDelete(int id)
+        {
+            if (_db.Properties.Any(u => u.CreatedByUser == id || u.UpdatedByUser == id))
+                return false;
+            else return true;
+        }
+
         public bool Delete(int id)
         {
             if(_db.Properties.Any(u => u.CreatedByUser == id || u.UpdatedByUser == id))

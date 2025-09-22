@@ -20,6 +20,7 @@ namespace DataLayer.Repositories
         /// <param name="id">UserId</param>
         /// <returns>false if has any Property</returns>
         bool Delete(int id);
+        bool CanDelete(int id);
 
         IEnumerable<AdminUser> GetNotActive();
         AdminUser? GetUser(UserLogin Src);
