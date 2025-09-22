@@ -15,7 +15,7 @@ namespace DataLayer.DTOs
         [MaxLength(100,ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5,ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
         public required string UserName { get; set => field = value.ToLower(); }
-        [DisplayName("نام کاربری")]
+        [DisplayName("رمز عبور")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(8, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
