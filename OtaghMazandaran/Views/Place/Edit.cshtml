@@ -1,0 +1,35 @@
+﻿@model DataLayer.Models.Place
+@{
+    ViewData["Title"] = "ویرایش مکان";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header heading-color">@ViewData["Title"]</h5>
+                <form method="POST">
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.PlaceId)
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <label asp-for="PlaceName" class="form-label"></label>
+                            <input asp-for="PlaceName" class="form-control" placeholder="نام مکان">
+                            <span asp-validation-for="PlaceName" class="form-text text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="PlaceDescription" class="form-label"></label>
+                            <input asp-for="PlaceDescription" class="form-control" placeholder="توضیح مکان">
+                            <span asp-validation-for="PlaceDescription" class="form-text text-danger"></span>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2">ذخیره تغییرات</button>
+                            <a asp-controller="Blog" asp-action="BlogCatList" class="btn btn-label-secondary">انصراف</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

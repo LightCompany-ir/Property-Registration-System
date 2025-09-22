@@ -20,6 +20,7 @@ namespace DataLayer.Repositories
         /// <param name="id"> Place Id</param>
         /// <returns>False if Place Has Property</returns>
         bool Delete(int id);
+        bool CanDelete(int id);
         void Save();
     }
 }

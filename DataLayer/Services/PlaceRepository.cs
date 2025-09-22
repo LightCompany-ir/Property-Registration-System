@@ -58,5 +58,10 @@ namespace DataLayer.Services
         {
             _db?.Dispose();
         }
+
+        public bool CanDelete(int id)
+        {
+            return !_db.Properties.Any(p => p.PlaceId == id);
+        }
     }
 }

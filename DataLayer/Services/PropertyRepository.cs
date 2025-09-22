@@ -60,6 +60,7 @@ namespace DataLayer.Services
         }
         public void Update(DataLayer.Models.Property src)
         {
+            src.UpdatedDate = DateTime.Now;
             _db.Update(src);
             Save();
         }

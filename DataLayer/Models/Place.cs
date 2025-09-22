@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -25,3 +26,4 @@ namespace DataLayer.Models
         public List<Property>? Properties { get; set; }
     }
 }
+/* PlaceId, PlaceName, PlaceDescription*/
