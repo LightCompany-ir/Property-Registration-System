@@ -57,7 +57,7 @@ namespace OtaghMazandaran.Controllers
                 Text = u.PlaceName
             }).ToList() as List<SelectListItem>;
 
-            return View(_db.Get(id));
+            return View(_db.GetforUpdateMV(id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
