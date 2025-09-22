@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataLayer.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace OtaghMazandaran.Controllers
 {
     public class PropertyController : Controller
     {
-        public IActionResult Index()
+        private IPropertyRepository _db;
+        public PropertyController(IPropertyRepository propertyRepository)
         {
-            return View();
+            _db = propertyRepository;
+        }
+        public IActionResult Index(int id = 0)
+        {
+            if(id == 0) return View(_db.GetAll());
+            else return View(_db.GetAll(id));
         }
     }
 }

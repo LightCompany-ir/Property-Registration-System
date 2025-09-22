@@ -26,6 +26,7 @@
                             <td>@item.PlaceId</td>
                             <td>@item.PlaceName</td>
                             <td>
+                                <a class="btn btn-info" asp-controller="Property" asp-action="Index" asp-route-id="@item.PlaceId"><i class="bx bx-box me-1"></i> اموال</a>
                                 <a class="btn btn-warning" asp-controller="Place" asp-action="Edit" asp-route-id="@item.PlaceId"><i class="bx bx-edit-alt me-1"></i> ویرایش</a>
                                 <a class="btn btn-danger" asp-controller="Place" asp-action="Delete" asp-route-id="@item.PlaceId"><i class="bx bx-trash me-1"></i> حذف</a>
                             </td>

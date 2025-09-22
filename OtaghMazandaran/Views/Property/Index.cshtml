@@ -1,8 +1,41 @@
-﻿
+﻿@model IEnumerable<DataLayer.Models.Property>
 @{
     ViewData["Title"] = "لیست اموال";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card">
+        <h5 class="card-header heading-color">
+            @ViewData["Title"]
+            <a class="btn btn-outline-success" asp-controller="Property" asp-action="Create">افزودن</a>
+        </h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>نام</th>
+                        <th>مکان</th>
+                        <th>عمل‌ها</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (DataLayer.Models.Property item in Model)
+                    {
+                        <tr>
+                            <td>@item.PropertyId</td>
+                            <td>@item.PropertyName</td>
+                            <td>@item.Place.PlaceName</td>
+                            <td>
+                                <a class="btn btn-warning" asp-controller="Property" asp-action="Edit" asp-route-id="@item.PlaceId"><i class="bx bx-edit-alt me-1"></i> ویرایش</a>
+                                <a class="btn btn-danger" asp-controller="Property" asp-action="Delete" asp-route-id="@item.PlaceId"><i class="bx bx-trash me-1"></i> حذف</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
