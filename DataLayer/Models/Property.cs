@@ -39,10 +39,8 @@ namespace DataLayer.Models
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int CreatedByUser { get; set; }
         [DisplayName(" بروز شده توسط ")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int? UpdatedByUser { get; set; } = null;
         [DisplayName(" حذف شده توسط ")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int? DeletedByUser { get; set; } = null;
         [DisplayName(" تاریخ ایجاد ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

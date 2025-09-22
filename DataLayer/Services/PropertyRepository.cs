@@ -2,6 +2,7 @@
 using DataLayer.DTOs;
 using DataLayer.Models;
 using DataLayer.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,11 @@ namespace DataLayer.Services
         }
         public IEnumerable<DataLayer.Models.Property> GetAll()
         {
-            return _db.Properties.OrderByDescending(o => o.UpdatedDate);
+            return _db.Properties.OrderByDescending(o => o.UpdatedDate).Include(u => u.Place);
         }
         public IEnumerable<DataLayer.Models.Property> GetAll(int PlaceId)
         {
-            return _db.Properties.Where(u => u.PlaceId == PlaceId).OrderByDescending(o => o.UpdatedDate);
+            return _db.Properties.Where(u => u.PlaceId == PlaceId).OrderByDescending(o => o.UpdatedDate).Include(u => u.Place);
         }
         public DataLayer.Models.Property Get(int id)
         {
