@@ -12,8 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option =>
     {
-        option.LoginPath = "/admin/login";
-        option.LogoutPath = "/";
+        option.LoginPath = "/Home/login";
+        option.LogoutPath = "/Home/login";
         option.ExpireTimeSpan = TimeSpan.FromDays(31);
     });
 //Local DataBase

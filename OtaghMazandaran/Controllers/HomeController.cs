@@ -1,3 +1,5 @@
+using DataLayer.DTOs;
+using DataLayer.Models;
 using DataLayer.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -19,73 +21,73 @@ namespace OtaghMazandaran.Controllers
             _logger = logger;
             _user = userRepository;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             //Welcome Page
             return View();
         }
         public IActionResult LogIn() { return View(); }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult LogIn(LoginViewModel Src)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(Src);
-        //    }
-        //    if (_usrdb.IsLogin(Src) == false)
-        //    {
-        //        ModelState.AddModelError("UserName", "ورود ناموفق بود");
-        //        return View(Src);
-        //    }
-        //    User? usr = _usrdb.GetUser(Src);
-        //    if (usr == null)
-        //    {
-        //        ModelState.AddModelError("UserName", "ورود ناموفق بود");
-        //        return View(Src);
-        //    }
-        //    var claims = new List<Claim>()
-        //    {
-        //        new Claim(ClaimTypes.NameIdentifier, usr.UserId.ToString()),
-        //        new Claim(ClaimTypes.Name,usr.FullName)
-        //    };
-        //    var Identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //    var Principal = new ClaimsPrincipal(Identity);
-        //    var properties = new AuthenticationProperties()
-        //    {
-        //        IsPersistent = true
-        //    };
-        //    HttpContext.SignInAsync(Principal, properties).Wait();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult LogIn(UserLogin Src)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(Src);
+            }
+            if (_user.IsLogin(Src) == false)
+            {
+                ModelState.AddModelError("UserName", "ورود ناموفق بود");
+                return View(Src);
+            }
+            AdminUser? usr = _user.GetUser(Src);
+            if (usr == null)
+            {
+                ModelState.AddModelError("UserName", "ورود ناموفق بود");
+                return View(Src);
+            }
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, usr.AdminUserId.ToString()),
+                new Claim(ClaimTypes.Name,usr.FullName)
+            };
+            var Identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var Principal = new ClaimsPrincipal(Identity);
+            var properties = new AuthenticationProperties()
+            {
+                IsPersistent = true
+            };
+            HttpContext.SignInAsync(Principal, properties).Wait();
+            return RedirectToAction("Index");
+        }
         public async Task<IActionResult> SignOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Redirect("/");
         }
         public IActionResult SignUp() { return View(); }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult SignUp(SignUpViewModel Src)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(Src);
-        //    }
-        //    if (_usrdb.IsUserNameExisted(Src.UserName) != 0)
-        //    {
-        //        ModelState.AddModelError("UserName", "نام کاربری تکراری است");
-        //        return View(Src);
-        //    }
-        //    if (_usrdb.IsPhoneExisted(Src.Phone) != 0)
-        //    {
-        //        ModelState.AddModelError("Phone", "شماره همراه تکراری است");
-        //        return View(Src);
-        //    }
-        //    _usrdb.SignUpUser(Src);
-        //    return RedirectToAction("LogIn");
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SignUp(UserSignUp Src)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(Src);
+            }
+            if (_user.IsUserNameExisted(Src.UserName) != 0)
+            {
+                ModelState.AddModelError("UserName", "نام کاربری تکراری است");
+                return View(Src);
+            }
+            if (_user.IsPhoneExisted(Src.Phone) != 0)
+            {
+                ModelState.AddModelError("Phone", "شماره همراه تکراری است");
+                return View(Src);
+            }
+            _user.SignUpUser(Src);
+            return RedirectToAction("LogIn");
+        }
         public IActionResult ForgotPassword()
         {
             throw new NotImplementedException();

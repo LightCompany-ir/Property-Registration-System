@@ -1,9 +1,11 @@
 ﻿using DataLayer.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace OtaghMazandaran.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         IUserRepository _db;
