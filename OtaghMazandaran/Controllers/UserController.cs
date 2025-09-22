@@ -1,11 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataLayer.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace OtaghMazandaran.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index() { return View(); }
+        IUserRepository _db;
+        public UserController(IUserRepository userRepository)
+        {
+            _db = userRepository;
+        }
+        public IActionResult Index() { return View(_db.GetAll()); }
         public IActionResult EditMe() { return View(); }
         [HttpPost]
         public IActionResult DeleteMyPhoto()

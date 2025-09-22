@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -41,3 +42,4 @@ namespace DataLayer.Models
         public bool IsActive { get; set; } = false;
     }
 }
+/*AdminUserId,FullName,UserName,Password,Phone,RegisterDate,UserImage,IsActive*/

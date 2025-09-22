@@ -1,3 +1,4 @@
+using DataLayer.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -11,14 +12,17 @@ namespace OtaghMazandaran.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IUserRepository _user;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository)
         {
             _logger = logger;
+            _user = userRepository;
         }
 
         public IActionResult Index()
         {
+            //Welcome Page
             return View();
         }
         public IActionResult LogIn() { return View(); }

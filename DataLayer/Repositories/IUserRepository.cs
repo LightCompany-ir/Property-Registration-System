@@ -23,7 +23,17 @@ namespace DataLayer.Repositories
 
         IEnumerable<AdminUser> GetNotActive();
         AdminUser? GetUser(UserLogin Src);
+        /// <summary>
+        /// If Phone Number Assign To Any User return UserId Or Zero if Not find any user
+        /// </summary>
+        /// <param name="phone">Phone Number As String Start With 09</param>
+        /// <returns>User Id Or 0 if Not Find</returns>
         int IsPhoneExisted(string phone);
+        /// <summary>
+        /// If UserName Assign To Any User return UserId Or Zero if Not find any user
+        /// </summary>
+        /// <param name="UserName">User Name All To Lower</param>
+        /// <returns>User Id Or 0 if Not Find</returns>
         int IsUserNameExisted(string UserName);
         bool IsLogin(UserLogin Src);
         int SignUpUser(UserSignUp Src);
