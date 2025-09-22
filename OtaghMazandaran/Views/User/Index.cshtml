@@ -45,8 +45,12 @@
                                 }
                             </td>
                             <td>
-                                <a class="btn btn-warning" asp-controller="Admin" asp-action="AdminUser" asp-route-id="@item.AdminUserId"><i class="bx bx-edit-alt me-1"></i></a>
-                                <a class="btn btn-danger" asp-controller="Admin" asp-action="AdminDelete" asp-route-id="@item.AdminUserId"><i class="bx bx-trash me-1"></i></a>
+                                @if(item.IsActive == false)
+                                {
+                                    <a class="btn btn-success" asp-controller="User" asp-action="ActiveUser" asp-route-id="@item.AdminUserId"><i class="bx bx-check-double me-1"></i></a>
+                                }
+                                <a class="btn btn-warning" asp-controller="User" asp-action="Edit" asp-route-id="@item.AdminUserId"><i class="bx bx-edit-alt me-1"></i></a>
+                                <a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.AdminUserId"><i class="bx bx-trash me-1"></i></a>
                             </td>
                         </tr>
                     }
