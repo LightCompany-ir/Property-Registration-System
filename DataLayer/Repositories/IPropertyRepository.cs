@@ -10,17 +10,18 @@ namespace DataLayer.Repositories
 {
     public interface IPropertyRepository : IDisposable
     {
-        IEnumerable<Property> GetAll();
+        IEnumerable<Models.Property> GetAll();
         /// <summary>
         /// List Of Property for One Place
         /// </summary>
         /// <param name="PlaceId">Place Id</param>
         /// <returns>List Of Property for One Place</returns>
-        IEnumerable<Property> GetAll(int PlaceId);
-        Property Get(int id);
-        int Insert(Property src);
+        IEnumerable<Models.Property> GetAll(int PlaceId);
+        Models.Property Get(int id);
+        UpdatePropertyMV GetforUpdateMV(int id);
+        int Insert(Models.Property src);
         int Insert(CreatePropertyMV src);
-        void Update(Property src);
+        void Update(Models.Property src);
         void Update(UpdatePropertyMV src);
         /// <summary>
         /// Delete Property if User Finded

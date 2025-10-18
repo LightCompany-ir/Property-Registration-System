@@ -49,7 +49,40 @@ namespace OtaghMazandaran.Controllers
             _db.Insert(src);
             return RedirectToAction("Index");
         }
-        public IActionResult Edit() { return View(); }
-        public IActionResult Delete() { return View(); }
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Places = _place.GetAll().Select(u => new SelectListItem
+            {
+                Value = u.PlaceId.ToString(),
+                Text = u.PlaceName
+            }).ToList() as List<SelectListItem>;
+
+            return View(_db.GetforUpdateMV(id));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([Bind(include: "PropertyId,PropertyName,PropertyBrand,PropertyColor,PropertyDescription,PlaceId")]UpdatePropertyMV src)
+        {
+            src.UpdatedByUser = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (ModelState.IsValid == false)
+            {
+                ViewBag.Places = _place.GetAll().Select(u => new SelectListItem
+                {
+                    Value = u.PlaceId.ToString(),
+                    Text = u.PlaceName
+                }).ToList() as List<SelectListItem>;
+
+                return View(src);
+            }
+            _db.Update(src);
+            return RedirectToAction("Index");
+        }
+        public IActionResult Delete(int id) { return View(_db.Get(id)); }
+        [HttpPost][ValidateAntiForgeryToken]
+        public IActionResult DeleteProperty(int PropertyId)
+        {
+            _db.Delete(PropertyId, Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -22,11 +22,12 @@ namespace DataLayer.Services
         }
         public IEnumerable<DataLayer.Models.Property> GetAll()
         {
-            return _db.Properties.OrderByDescending(o => o.UpdatedDate).Include(u => u.Place);
+            return _db.Properties.Where(w => w.DeletedByUser == null).OrderByDescending(o => o.UpdatedDate).Include(u => u.Place);
         }
         public IEnumerable<DataLayer.Models.Property> GetAll(int PlaceId)
         {
-            return _db.Properties.Where(u => u.PlaceId == PlaceId).OrderByDescending(o => o.UpdatedDate).Include(u => u.Place);
+            return _db.Properties.Where(u => u.PlaceId == PlaceId && u.DeletedByUser == null)
+                .OrderByDescending(o => o.UpdatedDate).Include(u => u.Place);
         }
         public DataLayer.Models.Property Get(int id)
         {
@@ -97,6 +98,22 @@ namespace DataLayer.Services
         public void Dispose()
         {
             _db?.Dispose();
+        }
+
+        public UpdatePropertyMV GetforUpdateMV(int id)
+        {
+            Models.Property src = Get(id);
+            UpdatePropertyMV rslt = new UpdatePropertyMV()
+            {
+                PropertyId = src.PropertyId,
+                PropertyName = src.PropertyName,
+                PropertyBrand = src.PropertyBrand,
+                PropertyColor = src.PropertyColor,
+                PropertyDescription = src.PropertyDescription,
+                PlaceId = src.PlaceId,
+                UpdatedByUser = 0
+            };
+            return rslt;
         }
     }
 }
