@@ -118,18 +118,18 @@ namespace DataLayer.Migrations
                     b.Property<int?>("DeletedByUser")
                         .HasColumnType("int");
 
+                    b.Property<string>("NewPropertyNumber")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("OldPropertyNumber")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<int>("PlaceId")
                         .HasColumnType("int");
-
-                    b.Property<string>("PropertyBrand")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("PropertyColor")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("PropertyDescription")
                         .IsRequired()

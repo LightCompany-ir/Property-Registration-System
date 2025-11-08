@@ -17,6 +17,7 @@
                         <th>#</th>
                         <th>نام</th>
                         <th>مکان</th>
+                        <th>شماره اموال جدید</th>
                         <th>آپدیت</th>
                         <th>عمل‌ها</th>
                     </tr>
@@ -28,6 +29,7 @@
                             <td>@item.PropertyId</td>
                             <td>@item.PropertyName</td>
                             <td>@item.Place.PlaceName</td>
+                            <td>@item.NewPropertyNumber</td>
                             <td>@item.UpdatedDate.ToShamsi()</td>
                             <td>
                                 <a class="btn btn-warning" asp-controller="Property" asp-action="Edit" asp-route-id="@item.PropertyId"><i class="bx bx-edit-alt me-1"></i> ویرایش</a>

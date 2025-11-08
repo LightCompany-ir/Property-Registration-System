@@ -12,21 +12,21 @@ namespace DataLayer.Models
     {
         [Key]
         public int PropertyId { get; set; }
-        [DisplayName(" نام دارایی ")]
+        [DisplayName(" نام کالا ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
         public required string PropertyName { get; set; }
-        [DisplayName(" برند دارایی ")]
+        [DisplayName("شماره اموال قدیم")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
-        public required string PropertyBrand { get; set; }
-        [DisplayName(" رنگ دارایی ")]
+        public required string OldPropertyNumber { get; set; }
+        [DisplayName("شماره اموال جدید")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
-        public required string PropertyColor { get; set; } = "نامشخص";
+        public required string NewPropertyNumber { get; set; } = "نامشخص";
         [DisplayName(" توضیحات دارایی ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
@@ -53,4 +53,4 @@ namespace DataLayer.Models
         public virtual Place Place { get; set; }
     }
 }
-/*PropertyId,PropertyName,PropertyBrand,PropertyColor,PropertyDescription,PlaceId,CreatedByUser,UpdatedByUser,DeletedByUser,CreatedDate,UpdatedDate*/
+/*PropertyId,PropertyName,OldPropertyNumber,NewPropertyNumber,PropertyDescription,PlaceId,CreatedByUser,UpdatedByUser,DeletedByUser,CreatedDate,UpdatedDate*/

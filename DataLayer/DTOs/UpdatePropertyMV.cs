@@ -17,16 +17,16 @@ namespace DataLayer.DTOs
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
         public required string PropertyName { get; set; }
-        [DisplayName(" برند دارایی ")]
+        [DisplayName("شماره اموال قدیم")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
-        public required string PropertyBrand { get; set; }
-        [DisplayName(" رنگ دارایی ")]
+        public required string OldPropertyNumber { get; set; }
+        [DisplayName("شماره اموال جدید")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
-        public required string PropertyColor { get; set; } = "نامشخص";
+        public required string NewPropertyNumber { get; set; } = "نامشخص";
         [DisplayName(" توضیحات دارایی ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]

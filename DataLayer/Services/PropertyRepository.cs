@@ -46,8 +46,8 @@ namespace DataLayer.Services
             DataLayer.Models.Property rslt = new DataLayer.Models.Property()
             {
                 PropertyName = src.PropertyName,
-                PropertyBrand = src.PropertyBrand,
-                PropertyColor = src.PropertyColor,
+                OldPropertyNumber = src.OldPropertyNumber,
+                NewPropertyNumber = src.NewPropertyNumber,
                 PropertyDescription = src.PropertyDescription,
                 PlaceId = src.PlaceId,
                 CreatedByUser = src.CreatedByUser,
@@ -72,8 +72,8 @@ namespace DataLayer.Services
 
             rslt.PropertyId = src.PropertyId;
             rslt.PropertyName = src.PropertyName;
-            rslt.PropertyBrand = src.PropertyBrand;
-            rslt.PropertyColor = src.PropertyColor;
+            rslt.OldPropertyNumber = src.OldPropertyNumber;
+            rslt.NewPropertyNumber = src.NewPropertyNumber;
             rslt.PropertyDescription = src.PropertyDescription;
             rslt.PlaceId = src.PlaceId;
             rslt.UpdatedByUser = src.UpdatedByUser;
@@ -107,8 +107,8 @@ namespace DataLayer.Services
             {
                 PropertyId = src.PropertyId,
                 PropertyName = src.PropertyName,
-                PropertyBrand = src.PropertyBrand,
-                PropertyColor = src.PropertyColor,
+                OldPropertyNumber = src.OldPropertyNumber,
+                NewPropertyNumber = src.NewPropertyNumber,
                 PropertyDescription = src.PropertyDescription,
                 PlaceId = src.PlaceId,
                 UpdatedByUser = 0

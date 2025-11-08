@@ -13,12 +13,12 @@ namespace DataLayer.Models
     {
         [Key]
         public int PlaceId { get; set; }
-        [DisplayName("مکان")]
+        [DisplayName("واحد")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(250, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         [MinLength(5, ErrorMessage = "ورودی {0} کمتر از حد مجاز است")]
         public required string PlaceName { get; set; }
-        [DisplayName("توضیح مکان")]
+        [DisplayName("توضیح واحد")]
         [MaxLength(550, ErrorMessage = "ورودی {0} بیش از حد مجاز است")]
         public string PlaceDescription { get; set; } = string.Empty;
 
