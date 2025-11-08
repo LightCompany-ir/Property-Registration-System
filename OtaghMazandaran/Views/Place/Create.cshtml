@@ -14,12 +14,12 @@
                     <div class="card-body row">
                         <div class="col-6">
                             <label asp-for="PlaceName" class="form-label"></label>
-                            <input asp-for="PlaceName" class="form-control" placeholder="نام مکان">
+                            <input asp-for="PlaceName" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PlaceName)">
                             <span asp-validation-for="PlaceName" class="form-text text-danger"></span>
                         </div>
                         <div class="col-6">
                             <label asp-for="PlaceDescription" class="form-label"></label>
-                            <input asp-for="PlaceDescription" class="form-control" placeholder="توضیح مکان">
+                            <input asp-for="PlaceDescription" class="form-control" placeholder="@Html.DisplayNameFor(model => model.PlaceDescription)">
                             <span asp-validation-for="PlaceDescription" class="form-text text-danger"></span>
                         </div>
                         <div class="mt-2">

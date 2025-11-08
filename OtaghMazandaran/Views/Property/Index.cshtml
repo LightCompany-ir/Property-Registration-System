@@ -10,6 +10,31 @@
             @ViewData["Title"]
             <a class="btn btn-outline-success" asp-controller="Property" asp-action="Create">افزودن</a>
         </h5>
+        <form method="get">
+            <input type="hidden" name="id" value="@ViewBag.Place" />
+            <div class="row text-center m-4">
+                <div class="col-1">
+                    <h6>جست وجو</h6>
+                </div>
+                <div class="col-4">
+                    <input class="form-control w-100" name="PropertyName" type="text" placeholder="نام کالا" />
+                </div>
+                <div class="col-4">
+                    <input class="form-control w-100" name="NewPropertyNumber" type="text" placeholder="شماره اموال جدید" />
+                </div>
+                <div class="col-3">
+                    <input class="btn btn-primary me-2 w-100" type="submit" value="جستوجو" />
+                </div>
+            </div>
+        </form>
+        <div class="row m-4">
+            <div class="col-3 text-center">
+                <h6>تعداد نتیجه</h6>
+            </div>
+            <div class="col-9">
+                <label class="text text-start">@Model.Count().ToString("n0")</label>
+            </div>
+        </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-striped">
                 <thead>

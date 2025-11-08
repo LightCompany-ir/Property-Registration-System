@@ -15,11 +15,21 @@ namespace OtaghMazandaran.Controllers
             _db = propertyRepository;
             _place = placeRepository;
         }
-        public IActionResult Index(int id = 0)
+        public IActionResult Index(int id = 0,string PropertyName = "" ,string NewPropertyNumber = "")
         {
             var rslt = _db.GetAll();
-            if(id == 0) return View(_db.GetAll());
-            else return View(_db.GetAll(id));
+            if(id != 0) rslt = _db.GetAll(id);
+
+            if(string.IsNullOrEmpty(PropertyName) == false)
+            {
+                rslt = rslt.Where(u=>u.PropertyName.Contains(PropertyName));
+            }
+            if (string.IsNullOrEmpty(NewPropertyNumber) == false)
+            {
+                rslt = rslt.Where(u => u.NewPropertyNumber.Contains(NewPropertyNumber));
+            }
+            ViewBag.Place = id;
+            return View(rslt);
         }
         public IActionResult Create()
         {
@@ -33,7 +43,7 @@ namespace OtaghMazandaran.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind(include: "PropertyName,PropertyBrand,PropertyColor,PropertyDescription,PlaceId")]CreatePropertyMV src)
+        public IActionResult Create([Bind(include: "PropertyName,OldPropertyNumber,NewPropertyNumber,PropertyDescription,PlaceId")]CreatePropertyMV src)
         {
             src.CreatedByUser = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if(ModelState.IsValid == false)
@@ -61,7 +71,7 @@ namespace OtaghMazandaran.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind(include: "PropertyId,PropertyName,PropertyBrand,PropertyColor,PropertyDescription,PlaceId")]UpdatePropertyMV src)
+        public IActionResult Edit([Bind(include: "PropertyId,PropertyName,OldPropertyNumber,NewPropertyNumber,PropertyDescription,PlaceId")]UpdatePropertyMV src)
         {
             src.UpdatedByUser = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (ModelState.IsValid == false)
