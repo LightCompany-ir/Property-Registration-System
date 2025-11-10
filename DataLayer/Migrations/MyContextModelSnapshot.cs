@@ -62,7 +62,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("AdminUserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
@@ -98,7 +98,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("PlaceId");
 
-                    b.ToTable("Places");
+                    b.ToTable("Places", (string)null);
                 });
 
             modelBuilder.Entity("DataLayer.Models.Property", b =>
@@ -151,7 +151,7 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("PlaceId");
 
-                    b.ToTable("Properties");
+                    b.ToTable("Properties", (string)null);
                 });
 
             modelBuilder.Entity("DataLayer.Models.Property", b =>

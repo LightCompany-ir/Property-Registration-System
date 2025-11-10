@@ -1,0 +1,134 @@
+﻿@model IEnumerable<DataLayer.Models.Property>
+
+@{
+    ViewData["Title"] = "پرینت";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fa" class="light-style" dir="rtl" data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template-no-customizer">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+    <title>لایت کمپانی | @ViewData["Title"]</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/fonts/boxicons.css">
+    <link rel="stylesheet" href="~/fonts/fontawesome.css">
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/css/core-dark.css">
+    <link rel="stylesheet" href="~/css/theme-default-dark.css">
+    <link rel="stylesheet" href="~/css/demo.css">
+    <link rel="stylesheet" href="~/css/rtl.css">
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/lib/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/lib/typeahead-js/typeahead.css">
+    <!-- Vendor -->
+    <link rel="stylesheet" href="~/lib/formvalidation/dist/css/formValidation.min.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="~/css/pages/app-invoice-print.css" />
+    <!-- Helpers -->
+    <script src="~/js/helpers.js"></script>
+    <script src="~/js/config.js"></script>
+</head>
+
+<body>
+    <!-- Content -->
+
+    <div class="invoice-print p-5">
+        <div class="d-flex justify-content-between flex-row">
+            <div class="mb-4">
+                <div class="d-flex align-items-center svg-illustration mb-3 gap-2">
+                    <img src="~/favicon.png" style="max-width: 128px; max-height: 128px;" />
+                </div>
+                <p class="app-brand-text h3 mb-0 fw-bold">اتاق بازرگانی استان مازندران</p>
+                <p class="mb-1">ساری – کیلومتر ۳ اتوبان قائمشهر – بعد از اداره کل هواشناسی استان</p>
+                <p class="mb-0" dir="ltr"><span class="d-inline-block" dir="ltr">011-3389016</span> الی <span class="d-inline-block" dir="ltr">19</span></p>
+            </div>
+            <div>
+                <h4>لیست اموال</h4>
+                <div class="mb-2">
+                    <span>تاریخ چاپ:</span>
+                    <span class="fw-semibold">@DateTime.Now.ToShamsiString()</span>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row d-flex justify-content-between mb-4">
+            <div class="col-sm-6 w-50">
+                <h6>تحویل دهنده:</h6>
+                <p class="mb-1">نام و نام خانوادگی</p>
+                <p class="mb-1">امضاء</p>
+            </div>
+            <div class="col-sm-6 w-50">
+                <h6>تحویل گیرنده':</h6>
+                <p class="mb-1">نام و نام خانوادگی</p>
+                <p class="mb-1">امضاء</p>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table border-top m-0">
+                <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>نام اموال</th>
+                        <th>واحد مستقر</th>
+                        <th>شماره اموال قدیم</th>
+                        <th>شماره اموال جدید</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DataLayer.Models.Property item in Model)
+                    {
+                        <tr>
+                            <td>#@item.PropertyId</td>
+                            <td>@item.PropertyName</td>
+                            <td>@item.Place.PlaceName</td>
+                            <td class="text-nowrap">@item.OldPropertyNumber</td>
+                            <td class="text-nowrap">@item.NewPropertyNumber</td>
+                            <td>@item.PropertyDescription</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-12 lh-1-85 mt-3">
+                <span class="fw-semibold">یادداشت:</span>
+            </div>
+        </div>
+    </div>
+    <!-- / Content -->
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/lib/hammer/hammer.js"></script>
+    <script src="~/lib/i18n/i18n.js"></script>
+    <script src="~/lib/typeahead-js/typeahead.js"></script>
+    <script src="~/js/menu.js"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <script src="~/lib/formvalidation/dist/js/formvalidation.min.js"></script>
+    <script src="~/lib/formvalidation/dist/js/FormValidation.min.js"></script>
+    <script src="~/lib/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
+    <script src="~/lib/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="~/js/app-invoice-print.js"></script>
+</body>
+</html>

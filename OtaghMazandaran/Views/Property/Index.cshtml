@@ -13,16 +13,16 @@
         <form method="get">
             <input type="hidden" name="id" value="@ViewBag.Place" />
             <div class="row text-center m-4">
-                <div class="col-1">
+                <div class="col-lg-1 col-md-12 col-sm-12 mb-4">
                     <h6>جست وجو</h6>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <input class="form-control w-100" name="PropertyName" type="text" placeholder="نام کالا" />
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <input class="form-control w-100" name="NewPropertyNumber" type="text" placeholder="شماره اموال جدید" />
                 </div>
-                <div class="col-3">
+                <div class="col-lg-3 col-md-12 mb-4">
                     <input class="btn btn-primary me-2 w-100" type="submit" value="جستوجو" />
                 </div>
             </div>
@@ -31,8 +31,16 @@
             <div class="col-3 text-center">
                 <h6>تعداد نتیجه</h6>
             </div>
-            <div class="col-9">
+            <div class="col-6">
                 <label class="text text-start">@Model.Count().ToString("n0")</label>
+            </div>
+            <div class="col-3">
+                <form asp-action="PrintList" method="get">
+                    <input type="hidden" name="id" value="@ViewBag.Place" />
+                    <input type="hidden" name="PropertyName" value="@ViewBag.PropertyName" />
+                    <input type="hidden" name="NewPropertyNumber" value="@ViewBag.NewPropertyNumber" />
+                    <input type="submit" class="btn btn-outline-primary" value="پرینت" />
+                </form>
             </div>
         </div>
         <div class="table-responsive text-nowrap">
